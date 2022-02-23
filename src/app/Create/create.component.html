@@ -1,0 +1,44 @@
+<div class="container">
+  <h4 class="my-4">{{ !editMode ? "Create Blog" : "Update Blog" }}</h4>
+
+  <form
+    #createForm="ngForm"
+    (ngSubmit)="!editMode ? handleCreate(createForm) : handleEdit(createForm)"
+    autocapitalize="off"
+  >
+    <div class="mb-3 mt-3">
+      <label for="blog-title" class="form-label">Title:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="blog-title"
+        placeholder="Enter blog title"
+        name="blogTitle"
+        [(ngModel)]="model.blogTitle"
+        required
+        #blogTitleRef="ngModel"
+      />
+      <span *ngIf="showBlogSubmitError && blogTitleRef.invalid"
+        >Blog title required</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="blog-body">Body:</label>
+      <textarea
+        class="form-control"
+        rows="5"
+        id="blog-body"
+        name="blogBody"
+        [(ngModel)]="model.blogBody"
+        required
+        minlength="10"
+        #blogBodyRef="ngModel"
+      ></textarea>
+      <span *ngIf="showBlogSubmitError && blogBodyRef.invalid"
+        >Blog title required</span
+      >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Blog</button>
+  </form>
+</div>

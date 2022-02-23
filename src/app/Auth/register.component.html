@@ -1,0 +1,129 @@
+<div class="container">
+  <form class="" (ngSubmit)="handleSubmit(loginFormRef)" #loginFormRef="ngForm">
+    <div class="mb-3 mt-3">
+      <label for="email" class="form-label">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+        name="email"
+        [(ngModel)]="model.email"
+        required
+        #emailRef="ngModel"
+      />
+      <span *ngIf="showError && emailRef.invalid">Email required</span>
+    </div>
+    <div class="mb-3">
+      <label for="pwd" class="form-label">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="pwd"
+        placeholder="Enter password"
+        name="pswd"
+        [(ngModel)]="model.password"
+        required
+        minlength="4"
+        #passwordRef="ngModel"
+      />
+      <span *ngIf="showError && passwordRef.invalid">password required</span>
+    </div>
+    <label>Gender</label>
+    <select [(ngModel)]="model.gender" name="gender" class="form-select">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <p>How much do you like blogs</p>
+
+    <div class="form-check form-check-inline">
+      <label class="form-check-label" for="inlineRadio1">1</label>
+      <input
+        #radioRef="ngModel"
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio1"
+        [(ngModel)]="model.rating"
+        value="1"
+        required
+      />
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio2"
+        [(ngModel)]="model.rating"
+        value="2"
+        required
+      />
+      <label class="form-check-label" for="inlineRadio2">2</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio3"
+        [(ngModel)]="model.rating"
+        value="3"
+        required
+      />
+      <label class="form-check-label" for="inlineRadio3">3 </label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio4"
+        [(ngModel)]="model.rating"
+        value="4"
+        required
+      />
+      <label class="form-check-label" for="4">4</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="inlineRadioOptions"
+        id="inlineRadio5"
+        [(ngModel)]="model.rating"
+        value="5"
+        required
+      />
+      <label class="form-check-label" for="inlineRadio5">5</label>
+    </div>
+    <div *ngIf="showError && radioRef.invalid">
+      Must select atleast one option
+    </div>
+    <br />
+    <h5>Tech stack used in blogs</h5>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="jsCheckBox"
+        name="knowJs"
+        [(ngModel)]="model.knowJs"
+      />
+      <label class="form-check-label" for="jsCheckBox"> Javascript </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="angularCheckBox"
+        name="knowAngular"
+        [(ngModel)]="model.knowAngular"
+      />
+      <label class="form-check-label" for="angularCheckBox"> Angular </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
